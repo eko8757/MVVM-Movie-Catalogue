@@ -1,6 +1,7 @@
 package com.example.moviemvvm.ui.movie
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviemvvm.R
 import com.example.moviemvvm.adapter.MovieAdapter
 import com.example.moviemvvm.data.model.DiscoverMovie
+import com.example.moviemvvm.ui.detail.DetailMovieActivity
 import com.example.moviemvvm.utils.InfiniteScrollListener
 import com.example.moviemvvm.utils.gone
 import com.example.moviemvvm.utils.visible
@@ -50,7 +52,11 @@ class MovieListFragment : Fragment() {
 
         if (activity != null) {
             viewModel = obtainViewModel(requireActivity())
-            adapter = MovieAdapter(context!!)
+            adapter = MovieAdapter(context!!) {
+              val i = Intent(context, DetailMovieActivity::class.java)
+                i.putExtra("movieID", it.id)
+                startActivity(i)
+            }
 
             loadMovies()
             rv_movie.adapter = adapter
