@@ -1,6 +1,21 @@
 <resources>
     <string name="app_name">Movie MVVM</string>
 
+    <string name="movie">Movies</string>
+    <string name="tv">TV Show</string>
+    <string name="title_name">Title</string>
+    <string name="overview">Overview</string>
+    <string name="backdrop">Backdrop</string>
+    <string name="poster">Poster</string>
+    <string name="title">Title</string>
+    <string name="image_poster">Image Poster</string>
+    <string name="year">Year</string>
+    <string name="favorite">Favorite</string>
+
+    <string name="favorited">%1s added to favorited</string>
+    <string name="unfavorited">%1s removed from favorite</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -5,7 +5,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = "DiscoverTv")
 data class DiscoverTv(
     @PrimaryKey(autoGenerate = false)
@@ -35,4 +37,4 @@ data class DiscoverTv(
     @ColumnInfo(name = "first_air_date")
     @SerializedName("first_air_date")
     val firstAirDate: String
-)
+) : Parcelable

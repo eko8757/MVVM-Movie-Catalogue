@@ -4,6 +4,6 @@ import com.example.moviemvvm.data.model.DiscoverMovie
 import com.google.gson.annotations.SerializedName
 
 data class MovieResponse(
-    @SerializedName("result")
+    @SerializedName("results")
     val result: MutableList<DiscoverMovie>
 )

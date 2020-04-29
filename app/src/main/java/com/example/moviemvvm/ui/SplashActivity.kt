@@ -4,8 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.example.moviemvvm.R
 import com.example.moviemvvm.ui.home.MainActivity
+
+
 
 class SplashActivity : AppCompatActivity() {
 
@@ -14,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        setContentView(com.example.moviemvvm.R.layout.activity_splash)
 
         mHandler = Handler()
         mHandler.postDelayed({
@@ -22,5 +23,7 @@ class SplashActivity : AppCompatActivity() {
             startActivity(i)
             finish()
         }, SPLASH_DURATION)
+
+
     }
 }
