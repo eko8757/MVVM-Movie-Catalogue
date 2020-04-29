@@ -1,6 +1,7 @@
 package com.example.moviemvvm.ui.tv
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviemvvm.R
 import com.example.moviemvvm.adapter.TvAdapter
 import com.example.moviemvvm.data.model.DiscoverTv
+import com.example.moviemvvm.ui.detail.DetailTvShowActivity
 import com.example.moviemvvm.utils.InfiniteScrollListener
 import com.example.moviemvvm.utils.gone
 import com.example.moviemvvm.utils.visible
@@ -52,7 +54,11 @@ class TvListFragment : Fragment() {
 
         if (activity != null) {
             viewModel = obtainViewModel(requireActivity())
-            adapter = TvAdapter(context!!)
+            adapter = TvAdapter(context!!) {
+                val i = Intent(context, DetailTvShowActivity::class.java)
+                i.putExtra("tvShowID", it.id)
+                startActivity(i)
+            }
 
             loadShows()
             rvTvShow.adapter = adapter

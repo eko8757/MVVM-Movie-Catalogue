@@ -12,7 +12,7 @@ import com.example.moviemvvm.utils.year
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_list.view.*
 
-class TvAdapter(private val context: Context) : RecyclerView.Adapter<TvAdapter.ViewHolder>() {
+class TvAdapter(val context: Context, val listener: (DiscoverTv) -> Unit) : RecyclerView.Adapter<TvAdapter.ViewHolder>() {
 
     private var mTvShows : MutableList<DiscoverTv> = mutableListOf()
 
@@ -31,17 +31,21 @@ class TvAdapter(private val context: Context) : RecyclerView.Adapter<TvAdapter.V
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindData(mTvShows[position])
+        holder.bindData(mTvShows[position], listener)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bindData(data: DiscoverTv) {
+        fun bindData(data: DiscoverTv, listener: (DiscoverTv) -> Unit) {
             Picasso.get().load(Constant.BASE_IMAGE_URL + data.poster).into(itemView.imgPoster)
             itemView.tvTitle.text = data.title
             itemView.tvYear.text = data.firstAirDate.year()
             itemView.tvDescription.text = data.description
             itemView.ratingBar.rating = data.rating/2
+
+            itemView.setOnClickListener {
+                listener(data)
+            }
         }
     }
 
